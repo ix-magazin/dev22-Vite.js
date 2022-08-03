@@ -1,0 +1,70 @@
+/////////////////////////////////////////////////////////////////////////////////
+// Listing 1: Konsolenausgabe beim Starten eines neuen React-Projekts mit Vite //
+/////////////////////////////////////////////////////////////////////////////////
+
+yarn run v1.22.10
+$ vite
+
+  vite v2.9.14 dev server running at:
+
+  > Local: http://localhost:3000/
+  > Network: use `--host` to expose
+
+  ready in 430ms
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Listing 2: Konsolenausgabe beim Starten eines neuen React-Projekts mit Create-React-App (webpack) //
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+[13:07:00] yarn run v1.22.10
+$ react-scripts start
+Starting the development server...
+
+[13:07:12] Compiled successfully!
+
+You can now view cra-example in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.56.1:3000
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+
+
+///////////////////////////////////////////////////////////////////////
+// Listing 3: Das debug-Flag gibt Einblick in Vite (Konsolenausgabe) //
+///////////////////////////////////////////////////////////////////////
+
+vite:resolve 0.13ms react -> C:/dev/my-react-app/node_modules/.vite/deps/react.js?v=b3fc7909 +501ms
+vite:resolve 0.16ms react-dom/client -> C:/dev/my-react-app/node_modules/.vite/deps/react-dom_client.js?v=b3fc7909 +1ms
+vite:resolve 1.96ms ./index.css -> C:/dev/my-react-app/src/index.css +2ms
+vite:resolve 3.28ms ./App -> C:/dev/my-react-app/src/App.jsx +4ms
+vite:resolve 1.69ms /src/App.jsx -> C:/dev/my-react-app/src/App.jsx
+vite:load 3.62ms [plugin] /node_modules/.vite/deps/react.js?v=b3fc7909 +500ms
+vite:resolve 2.64ms ./logo.svg -> C:/dev/my-react-app/src/logo.svg +82ms
+vite:resolve 2.20ms ./App.css -> C:/dev/my-react-app/src/App.css +2s
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+// Listing 4: Vite löst import-Anweisungen auf, damit Browser sie verarbeiten können //
+///////////////////////////////////////////////////////////////////////////////////////
+
+- import { helloWorld } from 'dependency-a'
+// Die Version entspricht der installierten Paket-Version
++ import { helloWorld } from '/node_modules/dependency-a/dist/dependency-a.js?v=1.2.1'
+
+
+///////////////////////////////////////////////////////////////////////////
+//  Listing 5: Vite in einem PHP-basierten Backend einbinden (HTML-Code) //
+///////////////////////////////////////////////////////////////////////////
+
+@if (__DEV__)
+<!-- Entwicklung -->
+<script type="module" src="http://localhost:3000/@vite/client"></script>
+<script type="module" src="http://localhost:3000/index.js"></script>
+@else
+<!-- Produktion -->
+<script type="module" src="dist/{{ $manifest['index.js']['file'] }}"></script>
+<link href="dist/{{ $manifest['index.css']['file'] }}" rel="stylesheet" />
+@endif
